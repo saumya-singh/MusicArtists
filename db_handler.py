@@ -20,3 +20,4 @@ def get_artist_details(artist_name):
     print(rows)
     for i in rows:
         print("release: ", i[0], "                 ", "song: ", i[1])
+    return rows
