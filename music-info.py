@@ -1,21 +1,21 @@
 #!usr/bin/env python3
-from flask import Flask, request
+from flask import Flask, request, render_template
 import db_handler
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder = 'static', static_url_path = '')
 
 
 @app.route('/artists', methods=['GET'])
 def upload():
     artist_name = request.args.get('artist')
-    db_handler.get_artist_details(artist_name)
-    print(artist_name)
+    data = db_handler.get_artist_details(artist_name)
+    print(data)
+    return render_template('index.html', data=data)
 
 
 if __name__ == '__main__':
-    app.run()
-    # app.run(debug=True)
+    app.run(debug=True)
 
 # select artists.name, count(artists.name) from releases inner join artists on artists.id = releases.artist_id group by artists.name having count(artists.name)>1;
 # with names as (select name from artists group by name having count(name)>1) select id, name from artists where name in (select name from names);
