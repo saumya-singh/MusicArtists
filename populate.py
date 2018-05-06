@@ -53,9 +53,7 @@ def data_entry(for_table):
         details = clean_code(raw_details)
 
         if for_table == "artists":
-            query = "INSERT INTO ARTISTS (ID,NAME,POPULARITY,LATITUDE,LONGITUDE) \
-                  VALUES (\'{0}\', \'{1}\', \'{2}\', \'{3}\', \'{4}\')".format(
-                  details[1], details[2], details[0], details[3], details[4])
+            query = "INSERT INTO ARTISTS (ID,NAME,POPULARITY,LATITUDE,LONGITUDE) VALUES (\'{0}\', \'{1}\', \'{2}\', \'{3}\', \'{4}\')".format(details[1], details[2], details[0], details[3], details[4])
 
         if for_table == "releases":
             query = "INSERT INTO RELEASES (ID,NAME,ARTIST_ID) \
