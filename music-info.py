@@ -3,15 +3,16 @@ from flask import Flask, request, render_template
 import db_handler
 
 
-app = Flask(__name__, static_folder = 'static', static_url_path = '')
+app = Flask(__name__, static_folder='static', static_url_path='')
 
 
-@app.route('/artists', methods=['GET'])
+@app.route('/artistsinfo', methods=['GET'])
 def upload():
     artist_name = request.args.get('artist')
+    print(artist_name)
     data = db_handler.get_artist_details(artist_name)
     print(data)
-    return render_template('index.html', data=data)
+    return render_template('index4.html', segment_details=data)
 
 
 if __name__ == '__main__':
